@@ -13,11 +13,13 @@
        (context "/:service" [service]
          (wrap-match-service
           (routes
-           (ANY "/*" [] api-request-handler)))))
+           (ANY "/*" [] api-request-handler)))
+         config))
      (context "/:service" [service]
        (wrap-match-service
         (routes
-         (ANY "/*" [] api-request-handler)))))))
+         (ANY "/*" [] api-request-handler)))
+       config))))
 
 (def gateway
   (wrap-params

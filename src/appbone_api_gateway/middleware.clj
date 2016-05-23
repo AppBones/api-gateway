@@ -4,10 +4,9 @@
             [org.httpkit.server :refer [run-server]]
             [mount.core :refer [defstate]]
             [ring.util.response :as resp]
-            [org.httpkit.client :as http]
-            [appbone-api-gateway.config :refer [config]]))
+            [org.httpkit.client :as http]))
 
-(defn wrap-match-service [handler]
+(defn wrap-match-service [handler config]
   (fn [request]
     (let [s (get-in request [:route-params :service])
           k (keyword (str "appbone-api-host-" s))
