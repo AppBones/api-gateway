@@ -3,4 +3,6 @@
             [mount.core :refer [defstate]]))
 
 (defstate config
-  :start env)
+  :start (do
+           (println "Reading configuration ...")
+           env))

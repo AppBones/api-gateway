@@ -1,0 +1,3 @@
+{:appbone-api-host-leaderboards "appbone-leaderboard.herokuapp.com"
+ :oauth2-provider "appbone-auth.herokuapp.com"
+}
