@@ -11,15 +11,13 @@
    (context "/api" []
      (context "/:version{v[0-9]+}" [version]
        (context "/:service" [service]
-         (wrap-match-service
-          (routes
-           (ANY "/*" [] api-request-handler))
-          config)))
+         (-> (routes (ANY "/*" [] api-request-handler))
+             (wrap-match-service config)
+             (wrap-jwt-exchange config))))
      (context "/:service" [service]
-       (wrap-match-service
-        (routes
-         (ANY "/*" [] api-request-handler))
-        config)))))
+       (-> (routes (ANY "/*" [] api-request-handler))
+           (wrap-match-service config)
+           (wrap-jwt-exchange config))))))
 
 (def gateway
   (wrap-params
